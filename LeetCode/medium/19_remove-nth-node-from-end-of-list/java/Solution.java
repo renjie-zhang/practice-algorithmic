@@ -1,5 +1,5 @@
 /*
- * @Descripttion: 
+ * @Descripttion: 删除链表的倒数第n个结点
  * @version: 
  * @Author: renjie.zhang
  * @Date: 2019-10-24 17:30:27
