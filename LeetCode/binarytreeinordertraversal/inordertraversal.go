@@ -1,11 +1,4 @@
-/*
- * @Descripttion: https://leetcode-cn.com/problems/binary-tree-inorder-traversal/
- * @version: 链表的中序遍历
- * @Author: renjie.zhang
- * @Date: 2019-10-22 15:38:57
- * @LastEditTime: 2019-11-04 19:01:21
- */
-package golang
+package binarytreeinordertraversal
 
 type TreeNode struct {
 	Val   int

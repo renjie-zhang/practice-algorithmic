@@ -1,11 +1,4 @@
-/*
- * @Descripttion:
- * @version:
- * @Author: renjie.zhang
- * @Date: 2019-11-04 11:28:26
- * @LastEditTime: 2019-11-04 11:29:05
- */
-package golang
+package binarytreeinordertraversal
 
 import (
 	"fmt"
