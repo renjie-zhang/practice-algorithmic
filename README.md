@@ -1,2 +1,4 @@
-# Pracice-Algorithm
-我的刷题题解，题库来自于LeetCode、牛客网、或者网络
+#题库   
+http://codeforces.com/   codeforces  
+https://www.codewars.com/   codewars  
+https://leetcode-cn.com/    leetcode
