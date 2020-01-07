@@ -38,9 +38,14 @@ func Tickets(peopleInLine []int) string {
 				money[50]++
 			}
 		case v == 100:
-			if money[50] == 1 && money[25] == 1 {
+			if money[50] >= 1 && money[25] >= 1 {
+				money[100]++
+				money[25]--
+				money[50]--
 				continue
-			} else if money[25] == 3 {
+			} else if money[25] >= 3 {
+				money[100]++
+				money[25] -= 3
 				continue
 			} else {
 				return "NO"
