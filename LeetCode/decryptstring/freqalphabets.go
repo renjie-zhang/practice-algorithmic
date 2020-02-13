@@ -5,7 +5,7 @@ package decryptstring
 */
 
 func freqAlphabets(s string) string {
-    var answer string
+	var answer string
 	length := len(s)
 	for i := 0; i < length; i++ {
 		if i+2 < length && s[i+2] == '#' {
