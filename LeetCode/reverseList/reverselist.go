@@ -27,3 +27,12 @@ func ReverseList(head *ListNode) *ListNode {
 	}
 	return reverselist.Next
 }
+
+func ReverseList2(head *ListNode) *ListNode {
+	prev, current := &ListNode{}, head
+	prev = nil
+	for current != nil {
+		current.Next, prev, current = prev, current, current.Next
+	}
+	return prev
+}
