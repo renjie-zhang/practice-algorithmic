@@ -1,4 +1,4 @@
-package decryptstring
+package decrypt_string
 
 /**
 题目链接：https://leetcode-cn.com/problems/decrypt-string-from-alphabet-to-integer-mapping/

@@ -1,4 +1,4 @@
-package climbingstairs
+package climbing_stairs
 
 func climbStairs(n int) int {
 	if n == 1 {
