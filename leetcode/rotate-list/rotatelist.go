@@ -1,5 +1,10 @@
 package rotatelist
 
+type ListNode struct {
+	Val  int
+	Next *ListNode
+}
+
 /***
 链接： https://leetcode-cn.com/problems/rotate-list/
 */
@@ -10,8 +15,8 @@ package rotatelist
  *     Next *ListNode
  * }
  */
- func rotateRight(head *ListNode, k int) *ListNode {
-    if head == nil || head.Next == nil {
+func rotateRight(head *ListNode, k int) *ListNode {
+	if head == nil || head.Next == nil {
 		return head
 	}
 	if k == 0 {

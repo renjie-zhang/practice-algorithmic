@@ -14,19 +14,29 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package reverse_integer
+package combination_sum
 
-import "math"
+import "sort"
 
-func Reverse(x int) int {
-	value := 0
-	for x != 0{
-		temp := x % 10
-		x /= 10
-		value = value * 10 + temp
-		if value < math.MinInt32 || value > math.MaxInt32{
-			return 0
-		}
+func CombinationSum(candidates []int, target int) [][]int {
+	sort.Ints(candidates)
+	result := [][]int{}
+	dfs(candidates, nil, target, 0, &result)
+	return result
+}
+
+// 减法的方式进行解决
+func dfs(candidates []int, nums []int, target int, left int, result *[][]int) {
+	if target == 0 {
+		temp := make([]int, len(nums))
+		copy(temp, nums)
+		*result = append(*result, temp)
+		return
 	}
-	return value
+	for i := left; i < len(candidates); i++ {
+		if target < candidates[i] {
+			return
+		}
+		dfs(candidates, append(nums, candidates[i]), target-candidates[i], i, result)
+	}
 }

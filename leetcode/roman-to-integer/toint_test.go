@@ -14,28 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package combination_sum
+package roman_to_integer
 
-import "sort"
+import "testing"
+import "github.com/stretchr/testify/assert"
 
-func CombinationSum(candidates []int, target int) [][]int {
-	sort.Ints(candidates)
-	result := [][]int{}
-	dfs(candidates,nil,target,0,&result)
-	return result
+func TestRomanToInt(t *testing.T) {
+	temp := "I"
+	value := RomanToInt(temp)
+	assert.Equal(t, 1, value)
 }
-// 减法的方式进行解决
-func dfs(candidates []int,nums []int,target int,left int,result *[][]int){
-	if target == 0{
-		temp := make([]int,len(nums))
-		copy(temp,nums)
-		*result = append(*result,temp)
-		return
-	}
-	for i := left;i<len(candidates) ;i++  {
-		if target <candidates[i]{
-			return
-		}
-		dfs(candidates,append(nums,candidates[i]),target-candidates[i],i,result)
-	}
+
+func TestRomanToInt2(t *testing.T) {
+	temp := "MCMXCIV"
+	value := RomanToInt2(temp)
+	assert.Equal(t, 1994, value)
 }

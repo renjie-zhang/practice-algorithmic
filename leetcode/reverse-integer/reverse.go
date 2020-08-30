@@ -14,19 +14,19 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package roman_to_integer
+package reverse_integer
 
-import "testing"
-import "github.com/stretchr/testify/assert"
+import "math"
 
-func TestRomanToInt(t *testing.T){
-	temp := "I"
-	value := RomanToInt(temp)
-	assert.Equal(t,1,value)
-}
-
-func TestRomanToInt2(t *testing.T) {
-	temp := "MCMXCIV"
-	value := RomanToInt2(temp)
-	assert.Equal(t,1994,value)
+func Reverse(x int) int {
+	value := 0
+	for x != 0 {
+		temp := x % 10
+		x /= 10
+		value = value*10 + temp
+		if value < math.MinInt32 || value > math.MaxInt32 {
+			return 0
+		}
+	}
+	return value
 }

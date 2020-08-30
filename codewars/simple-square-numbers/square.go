@@ -15,7 +15,6 @@
  * limitations under the License.
  */
 
-
 /**
 In this Kata, you will be given a number n (n > 0) and your task will be to return the smallest square number N (N > 0)
 such that n + N is also a perfect square. If there is no answer, return -1 (nil in Clojure, Nothing in Haskell).
@@ -23,26 +22,26 @@ More examples in test cases.
 Good luck.
 Please don't forget to rate this kata.
 https://www.codewars.com/kata/5edc8c53d7cede0032eb6029/train/go
- */
+*/
 package simple_square_numbers
 
 import "math"
 
 func Solve(n int) int {
 
-	for b := int(math.Sqrt(float64(n))) +1; getSquare(b)-getSquare(b-1) <= n ;b++  {
-		temp := math.Sqrt(float64(getSquare(b)- n))
-		if tempValue,ok := Integer(temp);ok{
+	for b := int(math.Sqrt(float64(n))) + 1; getSquare(b)-getSquare(b-1) <= n; b++ {
+		temp := math.Sqrt(float64(getSquare(b) - n))
+		if tempValue, ok := Integer(temp); ok {
 			return getSquare(tempValue)
 		}
 	}
 	return -1
 }
 
-func getSquare(n int) int{
-	return n*n
+func getSquare(n int) int {
+	return n * n
 }
-func Integer(n float64) (int,bool){
+func Integer(n float64) (int, bool) {
 	intN := int(n)
 	return intN, n == float64(intN)
 }

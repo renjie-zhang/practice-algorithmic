@@ -23,25 +23,25 @@ import (
 
 // my solution
 func RomanToInt(s string) int {
-	values := strings.Split(s,"")
+	values := strings.Split(s, "")
 	var result = 0
 	var length = len(values)
-	for i := 0;i<length ;  {
+	for i := 0; i < length; {
 		switch values[i] {
 		case "I":
-			if i+1 == length{
+			if i+1 == length {
 				result = result + 1
 				i++
-			}else {
+			} else {
 				temp := i
-				temp ++
-				if values[temp] == "V"{
+				temp++
+				if values[temp] == "V" {
 					result = result + 4
-					i = i+2
-				}else if values[temp] == "X" {
+					i = i + 2
+				} else if values[temp] == "X" {
 					result = result + 9
-					i = i+2
-				}else {
+					i = i + 2
+				} else {
 					result = result + 1
 					i++
 				}
@@ -51,19 +51,19 @@ func RomanToInt(s string) int {
 			result = result + 5
 			i++
 		case "X":
-			if i+1 ==length{
+			if i+1 == length {
 				result = result + 10
 				i++
-			}else {
+			} else {
 				temp := i
-				temp ++
-				if values[temp] == "L"{
+				temp++
+				if values[temp] == "L" {
 					result = result + 40
-					i = i+2
-				}else if values[temp] == "C" {
+					i = i + 2
+				} else if values[temp] == "C" {
 					result = result + 90
-					i = i+2
-				}else {
+					i = i + 2
+				} else {
 					result = result + 10
 					i++
 				}
@@ -72,19 +72,19 @@ func RomanToInt(s string) int {
 			result = result + 50
 			i++
 		case "C":
-			if i + 1 == length{
+			if i+1 == length {
 				result = result + 100
 				i++
-			}else {
+			} else {
 				temp := i
-				temp ++
-				if values[temp] == "D"{
+				temp++
+				if values[temp] == "D" {
 					result = result + 400
-					i = i+2
-				}else if values[temp] == "M" {
+					i = i + 2
+				} else if values[temp] == "M" {
 					result = result + 900
-					i = i+2
-				}else {
+					i = i + 2
+				} else {
 					result = result + 100
 					i++
 				}
@@ -97,22 +97,22 @@ func RomanToInt(s string) int {
 			i++
 		default:
 			fmt.Printf("err")
-		} 
+		}
 	}
 	return result
 }
 
 // other solution
-func RomanToInt2(s string) int{
-	values := strings.Split(s,"")
+func RomanToInt2(s string) int {
+	values := strings.Split(s, "")
 	result := 0
 	preValue := getValue(values[0])
 	length := len(values)
-	for i := 1;i < length ;i++  {
+	for i := 1; i < length; i++ {
 		temp := getValue(values[i])
-		if preValue < temp{
+		if preValue < temp {
 			result -= preValue
-		}else{
+		} else {
 			result += preValue
 		}
 		preValue = temp
@@ -122,7 +122,7 @@ func RomanToInt2(s string) int{
 
 }
 
-func getValue(s string) int{
+func getValue(s string) int {
 	switch s {
 	case "I":
 		return 1
