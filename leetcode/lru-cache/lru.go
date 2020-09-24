@@ -21,14 +21,15 @@ import (
 )
 
 type LRUCache struct {
-	v        map[int]int
+	va        map[int]int
 	capacity int
 	list *list.List
+
 }
 
 func Constructor(capacity int) LRUCache {
 	cache := LRUCache{
-		v:        make(map[int]int, capacity),
+		va:        make(map[int]int, capacity),
 		capacity: capacity,
 		list: list.New(),
 	}
@@ -36,7 +37,7 @@ func Constructor(capacity int) LRUCache {
 }
 
 func (this *LRUCache) Get(key int) int {
-	value, ok := this.v[key]
+	value, ok := this.va[key]
 	var v *list.Element
 	if ok {
 		for e := this.list.Front();e != nil;e = e.Next(){
@@ -53,32 +54,31 @@ func (this *LRUCache) Get(key int) int {
 }
 
 func (this *LRUCache) Put(key int, value int) {
-	if len(this.v) == this.capacity{
-		_, ok := this.v[key]
+	if len(this.va) == this.capacity{
+		_, ok := this.va[key]
 		var v *list.Element
 		if ok {
 			for e := this.list.Front();e != nil;e = e.Next(){
-				if e.Value == key{
+				if e.Value.(int) == key{
 					v = e
 					break
 				}
-
 			}
 			this.list.MoveToFront(v)
-			this.v[key] = value
+			this.va[key] = value
 		}else {
 			//delete last use element
 			temp := this.list.Back()
 			if temp != nil{
 				this.list.Remove(temp)
-				delete(this.v,temp.Value.(int))
+				delete(this.va,temp.Value.(int))
 			}
 			this.list.PushFront(key)
-			this.v[key] = value
+			this.va[key] = value
 		}
 	}else {
 		this.list.PushFront(key)
-		this.v[key] = value
+		this.va[key] = value
 	}
 }
 
