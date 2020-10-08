@@ -23,5 +23,5 @@ import (
 )
 
 func TestGetSum(t *testing.T) {
-	assert.Equal(t, true, reflect.DeepEqual(3, GetSum(1,2)))
+	assert.Equal(t, true, reflect.DeepEqual(6, GetSum(1,5)))
 }

@@ -16,75 +16,86 @@
  */
 package lru_cache
 
-import (
-	"container/list"
-)
-
 type LRUCache struct {
-	va        map[int]int
+	size int
 	capacity int
-	list *list.List
-
+	cache map[int]*DoubleLinkedNode
+	head,tail *DoubleLinkedNode
 }
 
-func Constructor(capacity int) LRUCache {
-	cache := LRUCache{
-		va:        make(map[int]int, capacity),
-		capacity: capacity,
-		list: list.New(),
+type DoubleLinkedNode struct {
+	key,value int
+	pre,next *DoubleLinkedNode
+}
+
+func initDoubleLinkedList(key,value int) *DoubleLinkedNode{
+	return &DoubleLinkedNode{
+		key:   key,
+		value: value,
+		pre:   nil,
+		next:  nil,
 	}
-	return cache
 }
 
-func (this *LRUCache) Get(key int) int {
-	value, ok := this.va[key]
-	var v *list.Element
-	if ok {
-		for e := this.list.Front();e != nil;e = e.Next(){
-			if e.Value.(int) == key{
-				v = e
-				break
-			}
-		}
-		this.list.MoveToFront(v)
-		return value
-	} else {
+func Constructor(capacity int) LRUCache{
+	lru := LRUCache{
+		capacity: capacity,
+		cache: map[int]*DoubleLinkedNode{},
+		head:     initDoubleLinkedList(0,0),
+		tail:     initDoubleLinkedList(0,0),
+	}
+	lru.head.next = lru.tail
+	lru.tail.pre = lru.head
+	return lru
+}
+
+func (c *LRUCache) Get(key int) int{
+	if _,ok := c.cache[key];!ok{
 		return -1
 	}
+	n := c.cache[key]
+	c.moveToHead(n)
+	return n.value
 }
 
-func (this *LRUCache) Put(key int, value int) {
-	if len(this.va) == this.capacity{
-		_, ok := this.va[key]
-		var v *list.Element
-		if ok {
-			for e := this.list.Front();e != nil;e = e.Next(){
-				if e.Value.(int) == key{
-					v = e
-					break
-				}
-			}
-			this.list.MoveToFront(v)
-			this.va[key] = value
-		}else {
-			//delete last use element
-			temp := this.list.Back()
-			if temp != nil{
-				this.list.Remove(temp)
-				delete(this.va,temp.Value.(int))
-			}
-			this.list.PushFront(key)
-			this.va[key] = value
+func (c *LRUCache) Put(key int,value int){
+	if _,ok := c.cache[key];!ok{
+		n := initDoubleLinkedList(key,value)
+		c.cache[key] = n
+		c.addToHead(n)
+		c.size++
+		if c.size > c.capacity{
+			re := c.removeTail()
+			delete(c.cache,re.key)
+			c.size--
 		}
 	}else {
-		this.list.PushFront(key)
-		this.va[key] = value
+		n := c.cache[key]
+		n.value = value
+		c.moveToHead(n)
 	}
 }
 
-/**
- * Your LRUCache object will be instantiated and called as such:
- * obj := Constructor(capacity);
- * param_1 := obj.Get(key);
- * obj.Put(key,value);
- */
+
+func (c *LRUCache) addToHead(node *DoubleLinkedNode){
+	node.pre = c.head
+	node.next = c.head.next
+	c.head.next.pre = node
+	c.head.next = node
+}
+
+func (c *LRUCache) removeNode(node *DoubleLinkedNode){
+	node.pre.next = node.next
+	node.next.pre = node.pre
+}
+
+func (c *LRUCache) moveToHead(node *DoubleLinkedNode){
+	c.removeNode(node)
+	c.addToHead(node)
+}
+
+func (c *LRUCache) removeTail() *DoubleLinkedNode{
+	n := c.tail.pre
+	c.removeNode(n)
+	return n
+}
