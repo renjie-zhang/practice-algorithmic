@@ -17,10 +17,10 @@
 package sum_of_two_integers
 
 func GetSum(a int, b int) int {
-	if b == 0{
+	if b == 0 {
 		return a
 	}
-	sum := a^b
-	temp := (a&b) <<1
-	return GetSum(sum,temp)
+	sum := a ^ b
+	temp := (a & b) << 1
+	return GetSum(sum, temp)
 }

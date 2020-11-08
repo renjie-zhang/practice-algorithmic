@@ -17,18 +17,18 @@
 package lru_cache
 
 type LRUCache struct {
-	size int
-	capacity int
-	cache map[int]*DoubleLinkedNode
-	head,tail *DoubleLinkedNode
+	size       int
+	capacity   int
+	cache      map[int]*DoubleLinkedNode
+	head, tail *DoubleLinkedNode
 }
 
 type DoubleLinkedNode struct {
-	key,value int
-	pre,next *DoubleLinkedNode
+	key, value int
+	pre, next  *DoubleLinkedNode
 }
 
-func initDoubleLinkedList(key,value int) *DoubleLinkedNode{
+func initDoubleLinkedList(key, value int) *DoubleLinkedNode {
 	return &DoubleLinkedNode{
 		key:   key,
 		value: value,
@@ -37,20 +37,20 @@ func initDoubleLinkedList(key,value int) *DoubleLinkedNode{
 	}
 }
 
-func Constructor(capacity int) LRUCache{
+func Constructor(capacity int) LRUCache {
 	lru := LRUCache{
 		capacity: capacity,
-		cache: map[int]*DoubleLinkedNode{},
-		head:     initDoubleLinkedList(0,0),
-		tail:     initDoubleLinkedList(0,0),
+		cache:    map[int]*DoubleLinkedNode{},
+		head:     initDoubleLinkedList(0, 0),
+		tail:     initDoubleLinkedList(0, 0),
 	}
 	lru.head.next = lru.tail
 	lru.tail.pre = lru.head
 	return lru
 }
 
-func (c *LRUCache) Get(key int) int{
-	if _,ok := c.cache[key];!ok{
+func (c *LRUCache) Get(key int) int {
+	if _, ok := c.cache[key]; !ok {
 		return -1
 	}
 	n := c.cache[key]
@@ -58,43 +58,42 @@ func (c *LRUCache) Get(key int) int{
 	return n.value
 }
 
-func (c *LRUCache) Put(key int,value int){
-	if _,ok := c.cache[key];!ok{
-		n := initDoubleLinkedList(key,value)
+func (c *LRUCache) Put(key int, value int) {
+	if _, ok := c.cache[key]; !ok {
+		n := initDoubleLinkedList(key, value)
 		c.cache[key] = n
 		c.addToHead(n)
 		c.size++
-		if c.size > c.capacity{
+		if c.size > c.capacity {
 			re := c.removeTail()
-			delete(c.cache,re.key)
+			delete(c.cache, re.key)
 			c.size--
 		}
-	}else {
+	} else {
 		n := c.cache[key]
 		n.value = value
 		c.moveToHead(n)
 	}
 }
 
-
-func (c *LRUCache) addToHead(node *DoubleLinkedNode){
+func (c *LRUCache) addToHead(node *DoubleLinkedNode) {
 	node.pre = c.head
 	node.next = c.head.next
 	c.head.next.pre = node
 	c.head.next = node
 }
 
-func (c *LRUCache) removeNode(node *DoubleLinkedNode){
+func (c *LRUCache) removeNode(node *DoubleLinkedNode) {
 	node.pre.next = node.next
 	node.next.pre = node.pre
 }
 
-func (c *LRUCache) moveToHead(node *DoubleLinkedNode){
+func (c *LRUCache) moveToHead(node *DoubleLinkedNode) {
 	c.removeNode(node)
 	c.addToHead(node)
 }
 
-func (c *LRUCache) removeTail() *DoubleLinkedNode{
+func (c *LRUCache) removeTail() *DoubleLinkedNode {
 	n := c.tail.pre
 	c.removeNode(n)
 	return n
