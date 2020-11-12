@@ -16,9 +16,14 @@
  */
 package find_first_and_last_position
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestSearchRange(t *testing.T) {
+	nums := []int{2,2}
 
+	fmt.Println(fmt.Sprint(SearchRange(nums,2)))
 
 }

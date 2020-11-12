@@ -17,7 +17,50 @@
 package find_first_and_last_position
 
 func SearchRange(nums []int, target int) []int {
+	var targetValue = []int{-1,-1}
 	// 把第一出现的地方叫做下边界 最后一次出现的地方为上边界
 	// 上边界的条件：
+	// 1 该值右边一个数不与之相等
+	// 2 该书左边没有数，也就是这个数是最后一个
 
+	a := searchLowerBound(nums,target,0,len(nums)-1)
+	targetValue[0] = a
+	b := searchUpperBound(nums,target,0,len(nums)-1)
+	targetValue[1] = b
+	// 下边界的条件：
+	// 1 该值左边一个数不与之相等
+	// 2 该书左边没有数，也就是这个数是第一个
+	return targetValue
+}
+
+func searchLowerBound(nums []int,target ,low, high int) int{
+	if(low > high){
+		return -1
+	}
+	midlle := low + (high - low)/2;
+	// 查看是否为第一个，或者左边的数比她小 此时下边界成立
+	if nums[midlle] == target &&(midlle == 0 || nums[midlle - 1] < target){
+		return midlle
+	}
+	if target<= nums[midlle]{
+		return searchLowerBound(nums,target,low,midlle - 1)
+	}else {
+		return searchLowerBound(nums,target,midlle+1,high)
+	}
+}
+
+func searchUpperBound(nums []int,target ,low, high int) int{
+	if(low > high){
+		return -1
+	}
+	midlle := low + (high - low)/2;
+	// 查看是否为第一个，或者左边的数比她小 此时下边界成立
+	if nums[midlle] == target &&(midlle == len(nums) - 1 || nums[midlle + 1] > target){
+		return midlle
+	}
+	if target< nums[midlle]{
+		return searchUpperBound(nums,target,low,midlle - 1)
+	}else {
+		return searchUpperBound(nums,target,midlle+1,high)
+	}
 }
