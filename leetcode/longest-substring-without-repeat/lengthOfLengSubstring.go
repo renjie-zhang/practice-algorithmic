@@ -16,7 +16,22 @@
  */
 package longest_substring_without_repeat
 
-// todo 待解决
+import (
+	"math"
+	"strings"
+)
+
 func LengthOfLongestSubstring(s string) int {
-	return 0
+	tempMap := make(map[string]int)
+	max := 0
+	tempS := strings.Split(s,"")
+	for i,j:= 0,0 ;j<len(tempS);j++{
+		tempString := tempS[j]
+		if _,ok := tempMap[tempString];ok{
+			i = int(math.Max(float64(i), float64(tempMap[tempString]+1)))
+		}
+		tempMap[tempS[j]] = j
+		max = int(math.Max(float64(max),float64(j-i+1)))
+	}
+	return max
 }

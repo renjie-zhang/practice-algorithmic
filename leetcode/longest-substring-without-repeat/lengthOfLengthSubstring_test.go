@@ -16,8 +16,12 @@
  */
 package longest_substring_without_repeat
 
-import "testing"
+import (
+	"fmt"
+	"testing"
+)
 
 func TestLengthOfLongestSubstring(t *testing.T) {
-
+	s := "abcabcbb"
+	fmt.Println(fmt.Sprint(LengthOfLongestSubstring(s)))
 }
