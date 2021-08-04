@@ -45,8 +45,10 @@ In the first example, Bashar walked from 2nd house to the 4th house to collect 1
 
 */
 
-package dasher
+package main
 
-func solution() {
+import "fmt"
 
+func main() {
+	fmt.Println("hello")
 }

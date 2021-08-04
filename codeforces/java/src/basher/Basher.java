@@ -14,23 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package combination_sum
 
-import (
-	"github.com/stretchr/testify/assert"
-	"reflect"
-	"testing"
-)
+package basher;
 
-func TestCombinationSum(t *testing.T) {
-	var temp = []int{2, 3, 5}
-	var target = 8
-	result := CombinationSum(temp, target)
-	var standard = [3][]int{
-		[]int{2, 2, 2, 2},
-		[]int{2, 3, 3},
-		[]int{3, 5},
-	}
-	assert.Equal(t, true, reflect.DeepEqual(result, standard))
-
+public class Basher {
+    public static void main(String[] args) {
+        System.out.println("hello");
+    }
 }

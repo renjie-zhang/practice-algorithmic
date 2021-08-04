@@ -14,14 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package simple_square_numbers
 
-import "testing"
-import "github.com/stretchr/testify/assert"
+package hello;
 
-func TestSolve(t *testing.T) {
-	assert.Equal(t, -1, Solve(1))
-	assert.Equal(t, -1, Solve(2))
-	assert.Equal(t, 9, Solve(7))
-	assert.Equal(t, 429235524, Solve(290101))
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("Hello");
+    }
 }

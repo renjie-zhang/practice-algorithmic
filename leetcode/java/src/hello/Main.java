@@ -14,16 +14,11 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package find_first_and_last_position
 
-import (
-	"fmt"
-	"testing"
-)
+package hello;
 
-func TestSearchRange(t *testing.T) {
-	nums := []int{2,2}
-
-	fmt.Println(fmt.Sprint(SearchRange(nums,2)))
-
+public class Main {
+    public static void main(String[] args) {
+        System.out.println("AA");
+    }
 }
