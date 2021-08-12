@@ -1,3 +1,7 @@
+package com.renjiezhang.printNum;
+
+import java.util.concurrent.atomic.AtomicInteger;
+
 class Foo {
 
     public Foo() {
