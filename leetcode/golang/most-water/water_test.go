@@ -14,15 +14,10 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package move_zero
+package most_water
 
-import (
-	"testing"
-)
+import "testing"
 
-func TestMoveZeroes(t *testing.T) {
-	/*var v1 = []int{0,1,0,3,12}
-	var v2 = []int{1,3,12,0,0}
-	var re = reflect.DeepEqual(MoveZeroes(v1),v2)
-	fmt.Printf("Result is %t\n",re)*/
+func TestMax(t *testing.T) {
+	Max()
 }

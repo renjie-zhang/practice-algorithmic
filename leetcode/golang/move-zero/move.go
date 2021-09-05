@@ -15,17 +15,17 @@
  * limitations under the License.
  */
 package move_zero
-
-func MoveZeroes(nums []int) []int {
-	var j = 0
-	for i := 0; i < len(nums); i++ {
+// https://leetcode-cn.com/problems/move-zeroes/
+func moveZeroes(nums []int)  {
+	j := 0
+	for i := 0;i<len(nums);i++{
 		if nums[i] != 0{
 			nums[j] = nums[i]
-			if j != i{
-				nums[i] =0
+			if( i!=j){
+				nums[i] = 0
 			}
 			j++
 		}
+
 	}
-	return nums
 }
