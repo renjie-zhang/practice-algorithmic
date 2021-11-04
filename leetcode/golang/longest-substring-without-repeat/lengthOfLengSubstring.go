@@ -24,14 +24,14 @@ import (
 func LengthOfLongestSubstring(s string) int {
 	tempMap := make(map[string]int)
 	max := 0
-	tempS := strings.Split(s,"")
-	for i,j:= 0,0 ;j<len(tempS);j++{
+	tempS := strings.Split(s, "")
+	for i, j := 0, 0; j < len(tempS); j++ {
 		tempString := tempS[j]
-		if _,ok := tempMap[tempString];ok{
+		if _, ok := tempMap[tempString]; ok {
 			i = int(math.Max(float64(i), float64(tempMap[tempString]+1)))
 		}
 		tempMap[tempS[j]] = j
-		max = int(math.Max(float64(max),float64(j-i+1)))
+		max = int(math.Max(float64(max), float64(j-i+1)))
 	}
 	return max
 }

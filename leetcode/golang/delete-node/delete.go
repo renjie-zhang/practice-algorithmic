@@ -17,17 +17,17 @@
 package delete_node
 
 type ListNode struct {
-	Val int
+	Val  int
 	Next *ListNode
 }
 
 func DeleteNode(node *ListNode) {
 	for node.Next != nil {
 		node.Val = node.Next.Val
-		if node.Next != nil &&node.Next.Next == nil{
+		if node.Next != nil && node.Next.Next == nil {
 			node.Val = node.Next.Val
 			node.Next = nil
-		}else {
+		} else {
 			node = node.Next
 		}
 	}

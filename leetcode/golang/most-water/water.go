@@ -24,22 +24,22 @@ import (
 // https://leetcode-cn.com/problems/container-with-most-water/
 func maxArea(height []int) int {
 	var max float64
-	j := len(height) -1
-	for i := 0; i < j;{
+	j := len(height) - 1
+	for i := 0; i < j; {
 		var minHeight int
-		if height[i] < height[j]{
-			minHeight= height[i]
+		if height[i] < height[j] {
+			minHeight = height[i]
 			i++
-		}else {
+		} else {
 			minHeight = height[j]
 			j--
 		}
-		max = math.Max(max,float64((j-i+1)*minHeight))
+		max = math.Max(max, float64((j-i+1)*minHeight))
 	}
 	return int(max)
 }
 
-func Max(){
-	var te = []int{1,8,6,2,5,4,8,3,7}
-	fmt.Printf("Value is %d",maxArea(te))
+func Max() {
+	var te = []int{1, 8, 6, 2, 5, 4, 8, 3, 7}
+	fmt.Printf("Value is %d", maxArea(te))
 }

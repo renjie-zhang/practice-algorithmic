@@ -22,6 +22,6 @@ import (
 )
 
 func TestSearch(t *testing.T) {
-	var nums = []int{1,3}
-	fmt.Println(fmt.Sprint(Search(nums,3)))
+	var nums = []int{1, 3}
+	fmt.Println(fmt.Sprint(Search(nums, 3)))
 }

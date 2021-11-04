@@ -23,8 +23,8 @@ import (
 )
 
 func TestDistributeCandies(t *testing.T) {
-	var c1 = []int{6,6,6,6}
-	var c2 = []int{1,1,2,2,3,3}
+	var c1 = []int{6, 6, 6, 6}
+	var c2 = []int{1, 1, 2, 2, 3, 3}
 	assert.Equal(t, true, reflect.DeepEqual(1, DistributeCandies(c1)))
 	assert.Equal(t, true, reflect.DeepEqual(3, DistributeCandies(c2)))
 }

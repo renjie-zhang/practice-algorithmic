@@ -23,10 +23,10 @@ func GetSumAbsoluteDifferences(nums []int) []int {
 	for i := 0; i < len(nums); i++ {
 		sum = sum + nums[i]
 	}
-	result = append(result,sum-nums[0]*length)
+	result = append(result, sum-nums[0]*length)
 	for i := 1; i < length; i++ {
 		var temp = nums[i] - nums[i-1]
-		result = append(result,result[i-1]-(length-i*2)*temp)
+		result = append(result, result[i-1]-(length-i*2)*temp)
 	}
 
 	return result

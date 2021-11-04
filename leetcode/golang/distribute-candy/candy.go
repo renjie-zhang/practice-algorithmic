@@ -20,20 +20,17 @@ import "container/list"
 
 func DistributeCandies(candyType []int) int {
 	var s list.List
-	var r  = make(map[int]bool,len(candyType))
+	var r = make(map[int]bool, len(candyType))
 	for i := 0; i < len(candyType); i++ {
-		if _,ok := r[candyType[i]];!ok{
+		if _, ok := r[candyType[i]]; !ok {
 			s.PushBack(candyType[i])
 			r[candyType[i]] = true
 		}
 	}
 	var length = s.Len()
-	var max = len(candyType)/2
-	if length <= max{
+	var max = len(candyType) / 2
+	if length <= max {
 		return length
 	}
 	return max
 }
-
-
-

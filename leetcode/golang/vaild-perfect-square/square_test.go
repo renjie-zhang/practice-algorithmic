@@ -14,26 +14,14 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package relative_sort_array
+package vaild_perfect_square
 
-import "sort"
+import (
+	"github.com/stretchr/testify/assert"
+	"reflect"
+	"testing"
+)
 
-func RelativeSortArray(arr1 []int, arr2 []int) []int {
-	tempmap := make(map[int]int)
-	for k, v := range arr2 {
-		tempmap[v] = k
-	}
-	sort.Slice(arr1, func(i, j int) bool {
-		x, y := arr1[i], arr1[j]
-		vx, okx := tempmap[x]
-		vy, oky := tempmap[y]
-		if okx && oky {
-			return vx < vy
-		}
-		if oky || okx {
-			return okx
-		}
-		return x < y
-	})
-	return arr1
+func TestIsPerfectSquare(t *testing.T) {
+	assert.Equal(t, true,reflect.DeepEqual(true,IsPerfectSquare(9)))
 }

@@ -20,14 +20,14 @@ package balanced_string
 func balancedStringSplit(s string) int {
 	d := 0
 	ans := 0
-	for _,ch := range s{
-		if ch == 'L'{
+	for _, ch := range s {
+		if ch == 'L' {
 			d++
-		}else {
+		} else {
 			d--
 		}
-		if d==0{
-			ans ++
+		if d == 0 {
+			ans++
 		}
 	}
 	return ans

@@ -24,35 +24,35 @@ func threeSum(nums []int) [][]int {
 	sort.Ints(nums)
 	k := 0
 	for ; k < len(nums); k++ {
-		if nums[k] > 0{
+		if nums[k] > 0 {
 			break
 		}
-		if k >0 && nums[k] == nums[k-1] {
+		if k > 0 && nums[k] == nums[k-1] {
 			continue
 		}
-		i := k+1
-		j := len(nums) -1
-		for i<j{
-			temp := nums[i]+nums[j]+nums[k]
-			if temp<0{
-				i+=1
-				for i<j &&nums[i] == nums[i-1] {
-					i+=1
+		i := k + 1
+		j := len(nums) - 1
+		for i < j {
+			temp := nums[i] + nums[j] + nums[k]
+			if temp < 0 {
+				i += 1
+				for i < j && nums[i] == nums[i-1] {
+					i += 1
 				}
-			}else if temp>0{
-				j-=1
-				for i<j &&nums[j] == nums[j+1] {
-					j-=1
+			} else if temp > 0 {
+				j -= 1
+				for i < j && nums[j] == nums[j+1] {
+					j -= 1
 				}
-			}else {
-				result = append(result,[]int{nums[k],nums[i],nums[j]})
-				i+=1
-				j-=1
-				for i<j &&nums[i] == nums[i-1] {
-					i+=1
+			} else {
+				result = append(result, []int{nums[k], nums[i], nums[j]})
+				i += 1
+				j -= 1
+				for i < j && nums[i] == nums[i-1] {
+					i += 1
 				}
-				for i<j &&nums[j] == nums[j+1] {
-					j-=1
+				for i < j && nums[j] == nums[j+1] {
+					j -= 1
 				}
 			}
 		}

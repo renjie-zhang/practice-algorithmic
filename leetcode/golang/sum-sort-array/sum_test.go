@@ -23,7 +23,7 @@ import (
 )
 
 func TestGetSumAbsoluteDifferences(t *testing.T) {
-	var in = []int{2,3,5}
-	var out = []int{4,3,5}
+	var in = []int{2, 3, 5}
+	var out = []int{4, 3, 5}
 	assert.Equal(t, true, reflect.DeepEqual(out, GetSumAbsoluteDifferences(in)))
 }

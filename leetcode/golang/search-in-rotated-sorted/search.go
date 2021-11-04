@@ -17,27 +17,27 @@
 package search_in_rotated_sorted
 
 func Search(nums []int, target int) int {
-	return binarysearch(nums,target,0,len(nums)-1)
+	return binarysearch(nums, target, 0, len(nums)-1)
 }
 
-func binarysearch(nums []int,target,low,high int) int{
-	if(low > high){
+func binarysearch(nums []int, target, low, high int) int {
+	if low > high {
 		return -1
 	}
-	middle := low + (high - low) /2;
+	middle := low + (high-low)/2
 	// 如果nums[left] < nums[middles]
-	if nums[middle] == target{
+	if nums[middle] == target {
 		return middle
 	}
-	if nums[low] <= nums[middle]{
-		if nums[low] <= target && target < nums[middle]{
-			return binarysearch(nums,target,low,middle-1)
+	if nums[low] <= nums[middle] {
+		if nums[low] <= target && target < nums[middle] {
+			return binarysearch(nums, target, low, middle-1)
 		}
-		return binarysearch(nums,target,middle+1,high)
-	}else {
-		if nums[middle] < target && target <= nums[high]{
-			return binarysearch(nums,target,middle+1,high)
+		return binarysearch(nums, target, middle+1, high)
+	} else {
+		if nums[middle] < target && target <= nums[high] {
+			return binarysearch(nums, target, middle+1, high)
 		}
-		return binarysearch(nums,target,low,middle-1)
+		return binarysearch(nums, target, low, middle-1)
 	}
 }

@@ -14,26 +14,22 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package relative_sort_array
+package vaild_perfect_square
 
-import "sort"
-
-func RelativeSortArray(arr1 []int, arr2 []int) []int {
-	tempmap := make(map[int]int)
-	for k, v := range arr2 {
-		tempmap[v] = k
+func IsPerfectSquare(num int) bool {
+	if num == 1 {
+		return true
 	}
-	sort.Slice(arr1, func(i, j int) bool {
-		x, y := arr1[i], arr1[j]
-		vx, okx := tempmap[x]
-		vy, oky := tempmap[y]
-		if okx && oky {
-			return vx < vy
+	var t = num/2
+	for t * t > num{
+		t = t /2
+	}
+	mid := t * 2
+	for i := t;i <= mid ;i ++{
+		if i*i == num {
+			return true
 		}
-		if oky || okx {
-			return okx
-		}
-		return x < y
-	})
-	return arr1
+	}
+	return false
+
 }

@@ -21,10 +21,10 @@ import (
 )
 
 func TestDeleteNode(t *testing.T) {
-	var n1 = ListNode{4,nil}
-	var n2 = ListNode{5,nil}
-	var n3 = ListNode{1,nil}
-	var n4 = ListNode{9,nil}
+	var n1 = ListNode{4, nil}
+	var n2 = ListNode{5, nil}
+	var n3 = ListNode{1, nil}
+	var n4 = ListNode{9, nil}
 	n1.Next = &n2
 	n2.Next = &n3
 	n3.Next = &n4
